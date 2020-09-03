@@ -493,7 +493,6 @@ vendor/lib64/libsecfr_model.so
 vendor/lib64/libsegmentationeffect.uniplugin@1.0.so
 vendor/lib64/libsegmentationeffect_capture.uniplugin@1.0.so
 vendor/lib64/libsensorlistener.so
-vendor/lib64/libsensorndkbridge.so
 vendor/lib64/libsfeShiftExtrapolation.so
 vendor/lib64/libshotsuggestion.so
 vendor/lib64/libshotsuggestion_engines.so

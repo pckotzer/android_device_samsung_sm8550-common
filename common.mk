@@ -418,6 +418,7 @@ PRODUCT_PACKAGES += \
     android.frameworks.sensorservice@1.0.vendor \
     android.hardware.sensors-service.samsung-multihal \
     libsensorndkbridge \
+    libshim_sensorndkbridge \
     sensors.dynamic_sensor_hal
 
 PRODUCT_COPY_FILES += \
