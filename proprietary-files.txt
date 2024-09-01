@@ -581,10 +581,7 @@ vendor/firmware/CAMERA_ICP.b16
 vendor/firmware/CAMERA_ICP.b17
 vendor/firmware/CAMERA_ICP.b18
 vendor/firmware/CAMERA_ICP.b19
-vendor/firmware/CAMERA_ICP.b20
 vendor/firmware/CAMERA_ICP.elf
-vendor/firmware/CAMERA_ICP.mbn
-vendor/firmware/CAMERA_ICP.mdt
 vendor/firmware/CAMERA_ICP_170.elf
 
 # Charger
