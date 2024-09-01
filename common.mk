@@ -238,6 +238,7 @@ PRODUCT_PACKAGES += \
     init.samsung.connector.rc \
     init.samsung.display.rc \
     init.samsung.dp.rc \
+    init.samsung.firmware.rc \
     init.samsung.power.rc \
     init.samsung.rc
 
