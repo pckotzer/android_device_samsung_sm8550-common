@@ -759,9 +759,6 @@ vendor/firmware/evass.b15
 vendor/firmware/evass.b16
 vendor/firmware/evass.b17
 vendor/firmware/evass.b18
-vendor/firmware/evass.b19
-vendor/firmware/evass.mbn
-vendor/firmware/evass.mdt
 
 # FASTCV
 vendor/lib64/libfastcvdsp_stub.so
