@@ -118,13 +118,6 @@
         </interface>
     </hal>
     <hal format="aidl" optional="true">
-        <name>vendor.samsung.hardware.frcmc</name>
-        <interface>
-            <name>ISehFrcMc</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
         <name>vendor.samsung.hardware.security.fkeymaster</name>
         <interface>
             <name>ISehFkeymaster</name>

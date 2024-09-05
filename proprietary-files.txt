@@ -775,14 +775,6 @@ vendor/lib64/libsfp_teegw.so
 vendor/lib64/libsynaFpSensorTestNwd.so
 vendor/lib64/vendor.samsung.hardware.biometrics.fingerprint-V1-ndk.so
 
-# Frcmc
-vendor/bin/hw/vendor.samsung.hardware.frcmc-service
-vendor/etc/init/vendor.samsung.hardware.frcmc-service.rc
-vendor/etc/vintf/manifest/vendor.samsung.hardware.frcmc-service.xml
-vendor/lib64/libdspmc_qc.so
-vendor/lib64/libdspmc_wrapper.so
-vendor/lib64/vendor.samsung.hardware.frcmc-V1-ndk.so
-
 # GNSS
 vendor/bin/hw/android.hardware.gnss-aidl-service-qti
 vendor/bin/loc_launcher
