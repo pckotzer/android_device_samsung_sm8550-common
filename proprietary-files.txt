@@ -268,10 +268,8 @@ vendor/lib64/vendor.qti.latency@2.1.so
 vendor/lib64/vendor.qti.latency@2.2.so
 
 # Camera
-vendor/bin/hw/android.hardware.camera.provider@2.7-external-service
 vendor/bin/hw/vendor.samsung.hardware.camera.provider-service_64
 vendor/etc/external_camera_config.xml
-vendor/etc/init/android.hardware.camera.provider@2.7-external-service.rc
 vendor/etc/init/camera.unihal.rc
 vendor/etc/init/vendor.samsung.hardware.camera.provider-service_64.rc
 vendor/etc/permissions/vendor.android.hardware.camera.preview-dis.back.xml
