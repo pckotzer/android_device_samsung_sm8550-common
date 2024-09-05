@@ -606,9 +606,6 @@ system_ext/etc/seccomp_policy/tcmd.policy
 vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so
 
 # DRK
-vendor/bin/hw/vendor.samsung.hardware.security.drk@2.0-service
-vendor/etc/init/vendor.samsung.hardware.security.drk@2.0-service.rc
-vendor/lib64/libdk_vnd_service_core.so
 vendor/lib64/vendor.samsung.hardware.security.drk-V1-ndk.so
 vendor/lib64/vendor.samsung.hardware.security.drk@2.0.so
 
