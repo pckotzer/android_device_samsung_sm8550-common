@@ -322,6 +322,7 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_PACKAGES += \
     CarrierConfigResCommon \
     FrameworksResCommon \
+    FrameworksResSamsung \
     FrameworksResTarget \
     SettingsResSamsung \
     SystemUIResCommon \
