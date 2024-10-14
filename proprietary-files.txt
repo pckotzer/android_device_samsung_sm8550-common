@@ -89,7 +89,6 @@ vendor/etc/models/acd/event.eai
 vendor/etc/models/acd/music.eai
 vendor/etc/models/acd/speech.eai
 vendor/lib64/hw/audio.primary.kalama.so
-vendor/lib64/hw/sound_trigger.primary.kalama.so
 vendor/lib64/libAlacSwDec.so
 vendor/lib64/libApeSwDec.so
 vendor/lib64/libEvrcSwCodec.so
@@ -108,8 +107,6 @@ vendor/lib64/libcapiv2svarnnvendor.so
 vendor/lib64/libcapiv2udk7vendor.so
 vendor/lib64/libcapiv2uvvendor.so
 vendor/lib64/libdsd2pcm.so
-vendor/lib64/libfmpal.so
-vendor/lib64/libhfp_pal.so
 vendor/lib64/liblistensoundmodel2vendor.so
 vendor/lib64/liblx-ar_util.so
 -vendor/lib64/liblx-osal.so
@@ -121,7 +118,6 @@ vendor/lib64/libsecaudioinfo.so
 vendor/lib64/libsecaudiolevel.so
 vendor/lib64/libspatializerparamstorage.so
 vendor/lib64/libspeakercalibration.so
-vendor/lib64/spatializer-aidl-cpp.so
 vendor/lib64/vendor.qti.hardware.ListenSoundModel@1.0-impl.so
 vendor/lib64/vendor.qti.hardware.ListenSoundModel@1.0.so
 -vendor/lib64/vendor.qti.hardware.pal@1.0-impl.so
@@ -327,13 +323,11 @@ vendor/lib64/libBarcodeReader.vendor.quram.so
 vendor/lib64/libBeauty_v4.camera.samsung.so
 vendor/lib64/libBlurDetectionDeepLearning.camera.samsung.so
 vendor/lib64/libDLInterface.camera.samsung.so
-vendor/lib64/libDepthBokehVideo_interface.so
 vendor/lib64/libDeviceInfoProvider.so
 vendor/lib64/libDocumentDetector.uniplugin@1.0.so
 vendor/lib64/libEventFinder.camera.samsung.so
 vendor/lib64/libFace3DTA.so
 vendor/lib64/libFace3D_hlos.so
-vendor/lib64/libFaceService.so
 vendor/lib64/libFace_Landmark_API.camera.samsung.so
 vendor/lib64/libFastUWDistortionCorrection.camera.samsung.so
 vendor/lib64/libHDRVerifier_v1.camera.samsung.so
@@ -387,12 +381,6 @@ vendor/lib64/libai_denoiser_interface.so
 vendor/lib64/libaidenoiser.so
 vendor/lib64/libaidenoiserv2.so
 vendor/lib64/libaivideocentral.arcsoft.so
-vendor/lib64/libarcsoft_aieffectpk_cinematic.so
-vendor/lib64/libarcsoft_aieffectpk_detection.so
-vendor/lib64/libarcsoft_aieffectpk_video.so
-vendor/lib64/libarcsoft_aieffectpk_video_bokeh.so
-vendor/lib64/libarcsoft_aieffectpk_video_plight.so
-vendor/lib64/libarcsoft_aiscenedetection.so
 vendor/lib64/libarcsoft_deflicker_native.so
 vendor/lib64/libarcsoft_dualcam_portraitlighting_preview.so
 vendor/lib64/libarcsoft_object_tracking.so
@@ -407,6 +395,7 @@ vendor/lib64/libbitmlengine.so
 vendor/lib64/libbitmlenginev2.so
 vendor/lib64/libbodyid.arcsoft.so
 vendor/lib64/libc++_shared.so
+vendor/lib64/libcamxcommonutils.so
 vendor/lib64/libcamxfacialfeatures.so
 vendor/lib64/libcamxfdalgo.so
 vendor/lib64/libcamxfdengine.so
@@ -465,7 +454,6 @@ vendor/lib64/libmaskdetection.uniplugin@1.0.so
 vendor/lib64/libmcaimegpu.samsung.so
 vendor/lib64/libmcaimegpuSSM.samsung.so
 vendor/lib64/libmctfengine_stub.so
-vendor/lib64/libmeminfo.so
 vendor/lib64/libmfGhostDetection.so
 vendor/lib64/libmfec.so
 vendor/lib64/libmmcamera_bestats.so
@@ -559,7 +547,6 @@ vendor/lib64/unihal_scenario.so
 vendor/lib64/unihal_uniplugin@1.0.so
 vendor/lib64/vendor.qti.hardware.camera.aon-service-impl.so
 vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
-vendor/lib64/vendor.qti.hardware.camera.postproc@1.0.so
 vendor/lib64/vendor.samsung.hardware.camera.device-V1-ndk.so
 vendor/lib64/vendor.samsung.hardware.camera.provider-V1-ndk.so
 
@@ -766,9 +753,6 @@ vendor/lib64/libfloatingfeature.so
 vendor/lib64/libsecnativefeature.so
 vendor/lib64/libsemnativecarrierfeature.so
 
-# Fido
-vendor/lib64/libfidoauthnr_v2.so
-
 # Fingerprint
 vendor/lib64/libegis_fp_normal_sensor_test.so
 vendor/lib64/libgf_in_system_lib.so
@@ -972,7 +956,6 @@ vendor/lib64/libqcodec2_utils.so
 vendor/lib64/libqcodec2_v4l2codec.so
 vendor/lib64/libsavscmn.so
 vendor/lib64/libsavsvc.so
-vendor/lib64/libsfplugin_ccodec_utils.so
 vendor/lib64/libsimba.media.samsung.so
 vendor/lib64/libstagefright_foundation_vendor.so
 vendor/lib64/qti.video.utils.videobufferlayout.so
@@ -1077,6 +1060,9 @@ vendor/lib64/libspl.so
 vendor/lib64/libssd.so
 vendor/lib64/vendor.qti.hardware.qseecom@1.0.so
 
+# QSPM
+vendor/lib64/vendor.qti.qspmhal@1.0.so
+
 # RIL
 vendor/bin/hw/rild
 vendor/bin/ipacm-diag
@@ -1092,8 +1078,8 @@ vendor/etc/locale/plmn_delta_zh-rHK.bin
 vendor/etc/locale/plmn_delta_zh-rTW.bin
 vendor/etc/mtu-conf.xml
 vendor/etc/pdpcnt-conf.xml
-vendor/etc/plmn_delta_attaio.bin
 vendor/etc/plmn_delta.bin
+vendor/etc/plmn_delta_attaio.bin
 vendor/etc/plmn_delta_hktw.bin
 vendor/etc/plmn_delta_usagsm.bin
 vendor/etc/plmn_se13.bin
@@ -1120,7 +1106,6 @@ vendor/lib64/vendor.samsung.hardware.radio.bridge-V1-ndk.so
 vendor/lib64/vendor.samsung.hardware.radio.channel-V1-ndk.so
 vendor/lib64/vendor.samsung.hardware.radio.data-V1-ndk.so
 vendor/lib64/vendor.samsung.hardware.radio.messaging-V1-ndk.so
-vendor/lib64/vendor.samsung.hardware.radio.network-V1-ndk.so
 vendor/lib64/vendor.samsung.hardware.radio.sim-V1-ndk.so
 
 # RIL - UIM
