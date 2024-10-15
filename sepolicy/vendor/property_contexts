@@ -2,6 +2,9 @@
 vendor.bluetooth_fw_ver u:object_r:vendor_bluetooth_prop:s0
 vendor.bluetooth_nv_ver u:object_r:vendor_bluetooth_prop:s0
 
+# Fastcharge
+persist.vendor.sec.fastchg_enabled               u:object_r:vendor_sec_fastcharge_prop:s0
+
 # NFC
 ro.vendor.nfc.          u:object_r:vendor_sec_nfc_prop:s0
 

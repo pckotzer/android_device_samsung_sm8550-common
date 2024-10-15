@@ -47,6 +47,8 @@ on init
     chmod 0664 /dev/cpuset/foreground-boost/cpus
     chmod 0664 /dev/cpuset/background/cpus
 
+    chown system radio /sys/class/sec/switch/afc_disable
+
 # Create carrier folder for HiddenMenu
 on post-fs
     mkdir /efs/carrier 0755 system system

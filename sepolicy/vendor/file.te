@@ -19,6 +19,9 @@ type imei_efs_file, file_type;
 type sec_efs_file, file_type;
 type tee_efs_file, file_type;
 
+# Fastcharge
+type vendor_sysfs_sec_switch, fs_type, sysfs_type;
+
 # Fingerprint
 type vendor_biometrics_data_file, file_type, data_file_type;
 
@@ -28,6 +31,9 @@ type vendor_gatekeeper_data_file, file_type, data_file_type;
 # Input
 type proc_bus_input, fs_type, proc_type;
 type vendor_sysfs_input, fs_type, sysfs_type;
+
+# PowerShare
+type sysfs_powershare, sysfs_type, fs_type;
 
 # Proc
 type proc_simslot_count, fs_type, proc_type;

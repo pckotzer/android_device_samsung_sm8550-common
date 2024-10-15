@@ -1,0 +1,33 @@
+# Silence minksocket logs
+persist.log.tag.minksocket=S
+# Log
+persist.log.tag.bt_stack=S
+persist.log.tag.CamX=S
+persist.log.tag.CHIUSECASE=S
+persist.log.tag.cnss-daemon=S
+persist.log.tag.CVP=S
+persist.log.tag.DeviceStatisticsService=S
+persist.log.tag.DrmLibTime=S
+persist.log.tag.FastChargingPreferenceController=S
+persist.log.tag.QC-time-services=S
+persist.log.tag.ResourcesCompat=S
+persist.log.tag.SYNX-UMD=S
+persist.log.tag.ultrasound_extn=S
+persist.log.tag.slpi=S
+persist.log.tag.RBS=S
+persist.log.tag.bauth_FPBAuthService=S
+persist.log.tag.BaseDepthController=S
+persist.log.tag.WindowManager=S
+persist.log.tag.ContrastColorUtil=S
+persist.log.tag.ConstraintSet=S
+persist.log.tag.MediaControlGattService=S
+persist.log.tag.NearbyDiscovery=S
+persist.log.tag.Telecom=S
+persist.log.tag..gms.persistent=S
+persist.log.tag.CompatibilityChangeReporter=S
+persist.log.tag.InputMethodManagerService=S
+persist.log.tag.WindowManagerShell=S
+persist.log.tag.b/321291049=S
+persist.log.tag.HotseatPredictionController=S
+persist.log.tag.SecVibrator-HAL-AIDL-CORE=S
+persist.log.tag.StateManager=S

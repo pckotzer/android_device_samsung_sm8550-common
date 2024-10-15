@@ -1,0 +1,11 @@
+dontaudit untrusted_app proc_net:file { read };
+dontaudit untrusted_app proc_max_map_count:file { read };
+dontaudit untrusted_app proc_net_tcp_udp:file { read };
+dontaudit untrusted_app userdebug_or_eng_prop:file { read };
+dontaudit untrusted_app proc_asound:dir { search };
+dontaudit untrusted_app media_rw_data_file:file { relabelfrom };
+dontaudit untrusted_app qemu_hw_prop:file { read };
+dontaudit untrusted_app build_bootimage_prop:file { read };
+
+
+

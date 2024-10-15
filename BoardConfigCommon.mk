@@ -5,7 +5,6 @@
 #
 
 BUILD_BROKEN_DUP_RULES := true
-BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
 COMMON_PATH := device/samsung/sm8550-common
 
@@ -24,10 +23,12 @@ ART_BUILD_HOST_DEBUG := false
 # Audio
 $(call soong_config_set, android_hardware_audio, run_64bit, true)
 
+
+AUDIO_FEATURE_ENABLED_GKI := false
+BUILD_AUDIO_TECHPACK_SOURCE := false
 AUDIO_FEATURE_ENABLED_DLKM := true
 AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT := true
 AUDIO_FEATURE_ENABLED_GEF_SUPPORT := true
-AUDIO_FEATURE_ENABLED_GKI := true
 AUDIO_FEATURE_ENABLED_INSTANCE_ID := true
 AUDIO_FEATURE_ENABLED_AGM_HIDL := true
 AUDIO_FEATURE_ENABLED_LSM_HIDL := true
@@ -38,6 +39,18 @@ AUDIO_FEATURE_ENABLED_SVA_MULTI_STAGE := true
 BOARD_SUPPORTS_OPENSOURCE_STHAL := true
 BOARD_SUPPORTS_SOUND_TRIGGER := true
 BOARD_USES_ALSA_AUDIO := true
+TARGET_PROVIDES_AUDIO_HAL := true
+AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
+AUDIO_FEATURE_ENABLED_FLAC_OFFLOAD := true
+AUDIO_FEATURE_ENABLED_FLUENCE := true
+AUDIO_FEATURE_ENABLED_HFP := true
+AUDIO_FEATURE_ENABLED_INCALL_MUSIC := false
+AUDIO_FEATURE_ENABLED_KPI_OPTIMIZE := true
+AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
+AUDIO_FEATURE_ENABLED_PCM_OFFLOAD := true
+AUDIO_FEATURE_ENABLED_PCM_OFFLOAD_24 := true
+AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
+AUDIO_FEATURE_ENABLED_DS2_DOLBY_DAP := true
 TARGET_USES_QCOM_MM_AUDIO := true
 
 # Boot
@@ -64,7 +77,9 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
 DEVICE_MANIFEST_FILE := \
     $(COMMON_PATH)/vintf/manifest_kalama.xml \
     $(COMMON_PATH)/vintf/manifest_samsung.xml \
-    $(COMMON_PATH)/vintf/radio_manifest.xml
+    $(COMMON_PATH)/vintf/radio_manifest.xml \
+    hardware/qcom-caf/sm8550/audio/primary-hal/configs/common/manifest_non_qmaa.xml \
+    hardware/qcom-caf/sm8550/audio/primary-hal/configs/common/manifest_non_qmaa_extn.xml
 
 DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
 
@@ -80,6 +95,7 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_samsung_sm8550
 BOARD_BOOTCONFIG := \
     androidboot.hardware=qcom \
     androidboot.memcg=1 \
+ #   androidboot.selinux=permissive \
     androidboot.usbcontroller=a600000.dwc3
 
 BOARD_KERNEL_CMDLINE := \
@@ -91,7 +107,6 @@ BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
-
 TARGET_KERNEL_SOURCE := kernel/samsung/sm8550
 
 # Kernel modules
@@ -149,6 +164,7 @@ TARGET_BOARD_PLATFORM := kalama
 TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
 TARGET_PRODUCT_PROP += $(COMMON_PATH)/product.prop
 TARGET_SYSTEM_EXT_PROP += $(COMMON_PATH)/system_ext.prop
+TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
 TARGET_ODM_PROP += $(COMMON_PATH)/odm.prop
 
 # Recovery

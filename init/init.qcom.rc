@@ -253,6 +253,11 @@ on boot
     # limit discard size to 128MB in order to avoid long IO latency
     write /sys/block/sda/queue/discard_max_bytes 134217728
 
+
+on property:sys.boot_completed=1
+    chown system system /sys/class/power_supply/battery/wc_tx_en 
+    chown system system /sys/class/power_supply/battery/wc_tx_stop_capacity
+
 # msm specific files that need to be created on /data
 on post-fs-data
     mkdir /data/vendor/misc 01771 system system
@@ -477,14 +482,28 @@ on property:persist.vendor.sys.rawdump_copy=0
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
     #Enable UFS clock scaling back
-    write /sys/bus/platform/devices/1d84000.ufshc/clkscale_enable 1
+    write /sys/bus/platform/devices/1d84000.ufshc/clkscale_enable "1"
     #Enable UFS auto_hibern8 back
-    write /sys/bus/platform/devices/1d84000.ufshc/auto_hibern8 2000
+    write /sys/bus/platform/devices/1d84000.ufshc/auto_hibern8 "2000"
     #Enable UFS clock gating back
-    write /sys/bus/platform/devices/1d84000.ufshc/clkgate_enable 1
+    write /sys/bus/platform/devices/1d84000.ufshc/clkgate_enable "1"
     #Reset read ahead for dm-0 and dm-1 to 512kb
-    write /sys/block/dm-0/queue/read_ahead_kb 512
-    write /sys/block/dm-1/queue/read_ahead_kb 512
+    write /sys/block/dm-1/queue/read_ahead_kb "5184l"
+    chmod 0444 /sys/block/dm-1/queue/read_ahead_kb
+    write /dev/cpuset/background/cpus "0-1"
+    chmod 0444 /dev/cpuset/background/cpus
+    write /dev/cpuset/restricted/cpus "0-2"
+    chmod 0444 /dev/cpuset/restricted/cpus
+    write /sys/block/sda/queue/scheduler "none"
+    chmod 0444 /sys/block/sda/queue/scheduler
+    write /sys/block/sda/queue/rq_affinity "0"
+    chmod 0444 /sys/block/sda/queue/rq_affinity
+    write /sys/block/sda/queue/read_ahead_kb "3584"
+    chmod 0444 /sys/block/sda/queue/read_ahead_kb
+    write /sys/block/dm-0/queue/read_ahead_kb "5184"
+    chmod 0444 /sys/block/dm-0/queue/read_ahead_kb
+    write /sys/block/sda/queue/nr_requests "45"
+    chmod 0444 /sys/block/sda/queue/nr_requests
     #WDSP FW boot sysfs node used by STHAL
     chown media audio /sys/kernel/wdsp0/boot
     chown media audio /sys/kernel/wcd_cpe0/fw_name

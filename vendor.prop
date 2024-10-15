@@ -59,6 +59,7 @@ persist.bluetooth.a2dp_offload.disabled=false
 persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac
 persist.vendor.bt.aac_frm_ctl.enabled=true
 persist.vendor.bt.aac_vbr_frm_ctl.enabled=true
+persist.vendor.service.bdroid.sibs=false
 ro.bluetooth.a2dp_offload.supported=true
 
 # Camera
@@ -122,17 +123,12 @@ ro.fuse.bpf.enabled=false
 ro.hardware.gatekeeper=mdfpp
 
 # Graphics
+ro.hwui.render_ahead=5
 debug.sf.disable_client_composition_cache=1
-debug.sf.early.app.duration=13666666
-debug.sf.early.sf.duration=15666666
-debug.sf.earlyGl.app.duration=13666666
-debug.sf.earlyGl.sf.duration=15666666
 debug.sf.enable_gl_backpressure=1
 debug.sf.enable_hwc_vds=0
 debug.sf.gpu_freq_index=7
 debug.sf.latch_unsignaled=1
-debug.sf.late.app.duration=13666666
-debug.sf.late.sf.duration=15666666
 debug.sf.predict_hwc_composition_strategy=0
 debug.sf.use_phase_offsets_as_durations=1
 ro.surface_flinger.force_hwc_copy_for_virtual_displays=true

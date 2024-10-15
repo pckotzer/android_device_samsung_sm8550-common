@@ -22,6 +22,10 @@
 # Convergence data
 /data/vendor/conn(/.*)?                      u:object_r:vendor_convergence_data_file:s0
 
+# Fastcharge
+/(vendor|system/vendor)/bin/hw/vendor\.lineage\.fastcharge@1\.0-service\.samsung                      u:object_r:hal_lineage_fastcharge_default_exec:s0
+/sys/devices/virtual/sec/switch(/.*)?                           u:object_r:vendor_sysfs_sec_switch:s0
+
 # Fingerprint data
 /data/vendor/biometrics(/.*)?                u:object_r:vendor_biometrics_data_file:s0
 

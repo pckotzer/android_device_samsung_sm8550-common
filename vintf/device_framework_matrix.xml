@@ -51,6 +51,15 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.dolby.hardware.dms</name>
+        <transport>hwbinder</transport>
+        <version>2.0</version>
+        <interface>
+            <name>IDms</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
     <hal format="aidl" optional="true">
         <name>vendor.samsung.hardware.keymint</name>
         <version>1-2</version>
@@ -150,6 +159,23 @@
         </interface>
         <interface>
             <name>IRemotelyProvisionedComponent</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+     <hal format="hidl" override="true">
+        <name>vendor.lineage.fastcharge</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IFastCharge</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.lineage.powershare</name>
+        <version>1.0</version>
+        <interface>
+            <name>IPowerShare</name>
             <instance>default</instance>
         </interface>
     </hal>
