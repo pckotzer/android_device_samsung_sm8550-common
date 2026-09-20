@@ -6,3 +6,4 @@ soong_namespace {
         "hardware/qcom-caf/common/libqti-perfd-client",
     ],
 }
+

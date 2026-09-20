@@ -1,7 +1,7 @@
 # Audio
 aaudio.hw_burst_min_usec=2000
 aaudio.mmap_exclusive_policy=2
-aaudio.mmap_policy=2
+aaudio.mmap_policy=1
 audio.sys.noisy.broadcast.delay=600
 audio.sys.offload.pstimeout.secs=3
 persist.audio.fluence.speaker=true
@@ -54,6 +54,12 @@ vendor.audio_hal.period_size=192
 vendor.qc2audio.per_frame.flac.dec.enabled=true
 vendor.qc2audio.suspend.enabled=true
 vendor.voice.path.for.pcm.voip=true
+af.resampler.quality=7
+persist.vendor.audio.bitdepth=32
+persist.vendor.audio.hires.buffer.size=1048576
+persist.vendor.audio.usb.support.format=384000
+persist.audio.usb.enable=true
+persist.audio.usb.exclusive=true
 
 # Bluetooth
 persist.bluetooth.a2dp_offload.disabled=false
@@ -150,7 +156,7 @@ ro.surface_flinger.wcg_composition_dataspace=143261696
 debug.sf.defer_refresh_rate_when_off=1
 
 # HWUI
-ro.hwui.render_ahead=10
+ro.hwui.render_ahead=15
 debug.hwui.renderer=skiavk
 debug.hwui.skia_tracing_enabled=false
 debug.hwui.skia_use_perfetto_track_events=false
@@ -222,6 +228,7 @@ vendor.dynamic_sensor.setup.timeout.ms=2000
 
 # SoC
 ro.soc.manufacturer=QTI
+persist.vendor.data.shsusr_load=0
 
 # USB
 ro.usb.uvc.disable_video_encode_flag=true
@@ -242,3 +249,4 @@ wifi.aware.interface=wifi-aware0
 
 # Zygote
 zygote.critical_window.minute=10
+persist.vendor.data.shsusr_load=0

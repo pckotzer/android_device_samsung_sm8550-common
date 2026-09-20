@@ -156,6 +156,9 @@ on property:ro.boot.debug_level=0x494d
     setprop vendor.fastrpc.process.attrs 0x40000001
     setprop vendor.fastrpc.debug.trace 1
 
+on charger
+    restart vendor.charger
+
 service factory_ssc /vendor/bin/factory.ssc
     class core
     user system

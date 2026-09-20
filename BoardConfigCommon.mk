@@ -11,7 +11,7 @@ TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv9-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_VARIANT := kryo785
-TARGET_CPU_VARIANT_RUNTIME := cortex-a510
+TARGET_CPU_VARIANT_RUNTIME := kryo785
 
 # A/B
 AB_OTA_UPDATER := false
@@ -39,9 +39,6 @@ BOARD_SUPPORTS_OPENSOURCE_STHAL := true
 BOARD_SUPPORTS_SOUND_TRIGGER := true
 TARGET_USES_QCOM_MM_AUDIO := true
 BOARD_USES_ALSA_AUDIO := true
-TARGET_PROVIDES_AUDIO_HAL := true
-TARGET_PROVIDES_LIBAGM := true
-TARGET_PROVIDES_LIBAR_PAL := true
 TARGET_USES_QCOM_MM_AUDIO := true
 
 # Boot
@@ -88,7 +85,9 @@ BOARD_USES_GENERIC_KERNEL_IMAGE := true
 
 
 TARGET_KERNEL_SOURCE := kernel/samsung/sm8550
-TARGET_KERNEL_CLANG_VERSION := r584948b
+#TARGET_KERNEL_CLANG_VERSION := newest
+BUILD_BROKEN_SRC_DIR_IS_WRITABLE := true
+TARGET_SUPPORTS_OMX_SERVICE := false
 
 # Kernel modules
 TARGET_KERNEL_EXT_MODULE_ROOT := kernel/samsung/sm8550-modules
@@ -176,8 +175,9 @@ VENDOR_SECURITY_PATCH := $(BOOT_SECURITY_PATCH)
 include device/qcom/sepolicy_vndr/SEPolicy.mk
 include device/lineage/sepolicy/libperfmgr/sepolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
-PRODUCT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
-PRODUCT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += packages/modules/ImsMedia/sepolicy/system_ext/private
 
 # DeviceAsWebcam
 TARGET_BUILD_DEVICE_AS_WEBCAM := true
@@ -199,7 +199,8 @@ BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
 
 # Vibrator
-$(call soong_config_set_bool,samsungVibratorVars,duration_amplitude,true)
+$(call soong_config_set_bool,samsungVibratorVars,duration_amplitude,false)
+$(call soong_config_set_bool,qtiaudio,pal_voip_sample_rate_calibration,true)
 
 # VINTF
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
@@ -208,8 +209,6 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml
 
 DEVICE_MANIFEST_FILE :=  \
-    $(AUDIO_HAL_DIR)/configs/common/manifest_non_qmaa.xml \
-    $(AUDIO_HAL_DIR)/configs/common/manifest_non_qmaa_extn.xml \
     $(COMMON_PATH)/vintf/manifest_extra.xml \
     $(COMMON_PATH)/vintf/manifest_kalama.xml \
     $(COMMON_PATH)/vintf/manifest_samsung.xml \

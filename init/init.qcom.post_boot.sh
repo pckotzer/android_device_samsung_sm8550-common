@@ -5832,20 +5832,20 @@ setprop persist.vendor.mmi.misc_dev_path $real_path
 # =========================
 
 CPU0_NODES="
-adaptive_high_freq=0
-adaptive_high_freq_kernel=0
+adaptive_high_freq=1017600
+adaptive_high_freq_kernel=1136000
 adaptive_low_freq=307200
 adaptive_low_freq_kernel=307200
-cpu0_volt_margin_pct=80
-cpu0_eff_limit=1901000
-down_rate_limit_us=5500
+down_rate_limit_us=3200
 hispeed_freq=1105000
 hispeed_load=20
+cpu0_volt_margin_pct=0
+cpu0_eff_limit=0
 pl=1
-rtg_boost_freq=1100000
+rtg_boost_freq=1200000
 target_load_shift=15
 target_load_thresh=0
-up_delay_freq=0
+up_delay_freq=1436000
 up_rate_limit_us=0
 "
 
@@ -5854,17 +5854,18 @@ adaptive_high_freq=0
 adaptive_high_freq_kernel=0
 adaptive_low_freq=307200
 adaptive_low_freq_kernel=307200
-cpu3_eff_limit=35
-cpu3_eff_limit=2050400
-down_rate_limit_us=180
+down_rate_limit_us=300
 hispeed_freq=1105000
-hispeed_load=55
+hispeed_load=50
+cpu3_eff_limit=28
+cpu3_eff_limit=2410400
+hispeed_freq=1105000
 pl=1
 rtg_boost_freq=900000
 target_load_shift=777
 target_load_thresh=0
-up_delay_freq=0
-up_rate_limit_us=0
+up_delay_freq=1436000
+up_rate_limit_us=200
 "
 
 CPU7_NODES="
@@ -5872,6 +5873,9 @@ adaptive_high_freq=0
 adaptive_high_freq_kernel=0
 adaptive_low_freq=307200
 adaptive_low_freq_kernel=307200
+down_rate_limit_us=280
+hispeed_freq=1105000
+hispeed_load=50
 cpu7_eff_limit=38
 cpu7_eff_limit=2323000
 down_rate_limit_us=220
@@ -5891,7 +5895,7 @@ CPU5_MIN_FREQ=729600
 CPU7_MIN_FREQ=998000
 
 # cpuset restriction
-RESTRICTED_CPUSET="5-7"
+RESTRICTED_CPUSET="1"
 
 # =========================
 # setter with verification
@@ -5906,7 +5910,7 @@ set_and_verify() {
     done
 
     while true; do
-        chmod 644 "$NODE" 2>/dev/null
+        chmod 664 "$NODE" 2>/dev/null
         echo "$VAL" > "$NODE"
         chmod 440 "$NODE" 2>/dev/null
 
@@ -5953,6 +5957,11 @@ apply_cpuset_locked() {
 
 sleep 2
 
+# set scaling governor to superwalt first
+set_and_verify "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor" "superwalt"
+set_and_verify "/sys/devices/system/cpu/cpu3/cpufreq/scaling_governor" "superwalt"
+set_and_verify "/sys/devices/system/cpu/cpu7/cpufreq/scaling_governor" "superwalt"
+
 # apply WALT governor settings
 apply_cpu cpu0 "$CPU0_NODES"
 apply_cpu cpu3 "$CPU3_NODES"
@@ -5962,5 +5971,4 @@ apply_cpu cpu7 "$CPU7_NODES"
 echo "$CPU0_MIN_FREQ" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 echo "$CPU5_MIN_FREQ" > /sys/devices/system/cpu/cpu5/cpufreq/scaling_min_freq
 echo "$CPU7_MIN_FREQ" > /sys/devices/system/cpu/cpu7/cpufreq/scaling_min_freq
-
 # End of CPU walt governor tweaks

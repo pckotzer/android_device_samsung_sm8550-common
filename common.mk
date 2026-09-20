@@ -28,20 +28,31 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio-impl \
     android.hardware.soundtrigger@2.3-impl \
     audio.bluetooth.default \
+    audio.primary.default \
+    audio.primary.kalama \
     audio.r_submix.default \
     audio.usb.default \
     audioadsprpcd \
     libagm_compress_plugin \
     libagm_mixer_plugin \
     libagm_pcm_plugin \
+    libagmclient \
+    libaudiochargerlistener \
     libbatterylistener \
     libfmpal \
     libhfp_pal \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
+    libsndcardparser \
+    libtinycompress \
     libvolumelistener \
+    SamsungDAP \
+    libsamsungSoundbooster_plus \
+    SoundBoosterStage \
     sound_trigger.primary.kalama
+    
+$(call soong_config_set,samsungAudioVars,soundbooster_dsp_library,//vendor/samsung/sm8550-common:lib_SoundBooster_ver1100)
 
 AUDIO_HAL_DIR := hardware/qcom-caf/sm8550/audio/primary-hal
 CONFIG_HAL_SRC_DIR := $(AUDIO_HAL_DIR)/configs/kalama
@@ -49,13 +60,12 @@ CONFIG_PAL_SRC_DIR := $(AUDIO_HAL_DIR)/../pal/configs/kalama
 TARGET_EXCLUDES_AUDIOFX := true
 
 PRODUCT_COPY_FILES += \
-    $(CONFIG_HAL_SRC_DIR)/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_kalama/audio_effects.conf \
     $(CONFIG_PAL_SRC_DIR)/card-defs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/card-defs.xml \
     $(CONFIG_HAL_SRC_DIR)/microphone_characteristics.xml:$(TARGET_COPY_OUT_VENDOR)/etc/microphone_characteristics.xml
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_kalama/audio_effects.xml \
-    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_kalama_qssi/audio_policy_configuration.xml \
+    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/audio/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     $(LOCAL_PATH)/audio/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml
 
@@ -144,7 +154,7 @@ PRODUCT_PACKAGES += \
 
 # EUICC
 PRODUCT_PACKAGES += \
-    SamsungEuicc
+    SamsungEsimSwitcher 
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.euicc.mep.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.hardware.telephony.euicc.mep.xml \
@@ -228,16 +238,17 @@ PRODUCT_PACKAGES += \
 # JamesDSP
 $(call inherit-product, device/samsung/sm8550-common/audio/JamesDSP/config.mk)
 
-# IMS over Wi-Fi data service and network qualification service.
-# These are also useful for VoLTE-only bring-up because the telephony
-# framework still expects the WLAN data/network service hooks to exist.
-PRODUCT_PACKAGES += \
-    Iwlan \
-    QualifiedNetworksService \
-    PhhIms
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/permissions/privapp-permissions-me.phh.ims.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-me.phh.ims.xml
+# AOSP userspace IMS and framework bearer services
+$(call inherit-product, packages/modules/ImsMedia/imsmedia.mk)
+$(call soong_config_set,imsstack_namespace,use_carrier_config_ext,true)
+
+PRODUCT_PACKAGES += \
+    ImsStack \
+    ImsStackOverlay \
+    Iwlan \
+    QualifiedNetworksService
+
 
 # Kernel
 PRODUCT_ENABLE_UFFD_GC := true
@@ -295,10 +306,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/google/interfaces \
-    hardware/google/pixel \
+    hardware/google/pixel/power-libperfmgr \
     hardware/lineage/interfaces/power-libperfmgr \
     hardware/qcom-caf/common/libqti-perfd-client \
-    hardware/samsung
+    hardware/samsung \
+    vendor/lineage/imsstack-carrier-config-ext
 
 # Overlays
 PRODUCT_ENFORCE_RRO_TARGETS := *
@@ -311,6 +323,7 @@ PRODUCT_PACKAGES += \
     FrameworksResTarget \
     FrameworksSettingsLib \
     NcmTetheringOverlay \
+    OpenEUICCOverlay \
     SettingsResCommon \
     SettingsResSamsung \
     SystemUIResCommon \
@@ -356,6 +369,7 @@ PRODUCT_COPY_FILES += \
 
 # RIL
 PRODUCT_PACKAGES += \
+    libsec-ril \
     secril_config_svc \
     sehradiomanager
 
